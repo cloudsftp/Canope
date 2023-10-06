@@ -12,12 +12,13 @@ import (
 func main() {
 	size := 1024
 	split := 2
-	levels := 7
+	levels := 5
 	length := 900.
 	ratio := 0.4
 	bredth := math.Pi * 0.3
 	line := 10.
-	img := canope.DrawCanope(size, split, levels, length, ratio, bredth, line)
+	background := true
+	img := canope.DrawCanope(size, split, levels, length, ratio, bredth, line, background)
 
 	pic, err := os.Create("canope.png")
 	if err != nil {

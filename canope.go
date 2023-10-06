@@ -3,16 +3,20 @@ package canope
 import (
 	"image"
 	"image/color"
+	"image/draw"
 	"math"
 
 	"github.com/llgcode/draw2d/draw2dimg"
 )
 
-func DrawCanope(res, split, levels int, length, ratio, bredth, line float64) image.Image {
+func DrawCanope(res, split, levels int, length, ratio, bredth, line float64, background bool) image.Image {
 	img := image.NewRGBA(image.Rect(0, 0, res, res))
+	if background {
+		draw.Draw(img, img.Bounds(), &image.Uniform{color.White}, image.Point{}, draw.Src)
+	}
 	gc := draw2dimg.NewGraphicContext(img)
 
-	gc.SetStrokeColor(color.White)
+	gc.SetStrokeColor(color.Black)
 
 	start := float64(res) - (float64(res)-length)/2
 	middle := float64(res) / 2
